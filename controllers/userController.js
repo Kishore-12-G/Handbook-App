@@ -1,6 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const jwt = require('jsonwebtoken');
-// const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs'); // Commented out bcrypt
 require('dotenv').config();
 
 const prisma = new PrismaClient();
@@ -16,14 +16,12 @@ exports.registerUser = async (req, res) => {
   try {
     const { username, email, password, armyId } = req.body;
 
-    // Skip hashing
-    // const hashedPassword = await hashPassword(password);
-
+    // Skip hashing - use password directly
     const user = await prisma.user.create({
       data: {
         username,
         email,
-        password: password, // directly use plain password
+        password, // directly use plain password
         armyId
       }
     });
@@ -119,18 +117,15 @@ exports.changePassword = async (req, res) => {
 
     const { currentPassword, newPassword } = req.body;
 
-    // Check current password
-    const isMatch = await bcrypt.compare(currentPassword, user.password);
-
-    if (!isMatch) {
+    // Direct password comparison instead of using bcrypt
+    if (currentPassword !== user.password) {
       return res.status(401).json({ message: 'Current password is incorrect' });
     }
 
-    // Update password
-    const hashedPassword = await hashPassword(newPassword);
+    // Update password with plain text
     await prisma.user.update({
       where: { userId: req.params.userId },
-      data: { password: hashedPassword }
+      data: { password: newPassword }
     });
 
     res.status(204).send();
@@ -172,10 +167,8 @@ exports.loginUser = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    // Direct password comparison
-    const isMatch = password === user.password;
-
-    if (!isMatch) {
+    // Direct password comparison instead of using bcrypt
+    if (password !== user.password) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
