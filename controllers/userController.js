@@ -31,7 +31,8 @@ exports.registerUser = async (req, res) => {
       username: user.username,
       email: user.email,
       armyId: user.armyId,
-      createdAt: user.createdAt
+      createdAt: user.createdAt,
+      message:'User Registered Successfully'
     });
   } catch (error) {
     if (error.code === 'P2002') {
@@ -60,7 +61,8 @@ exports.getUserProfile = async (req, res) => {
       email: user.email,
       armyId: user.armyId,
       createdAt: user.createdAt,
-      updatedAt: user.updatedAt
+      updatedAt: user.updatedAt,
+      message:'User Fetched Successfully'
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -81,6 +83,7 @@ exports.updateUserProfile = async (req, res) => {
         email,
         armyId,
         updatedAt: new Date().toISOString()
+       
       }
     });
 
@@ -89,7 +92,8 @@ exports.updateUserProfile = async (req, res) => {
       username: user.username,
       email: user.email,
       armyId: user.armyId,
-      updatedAt: user.updatedAt
+      updatedAt: user.updatedAt,
+      message:'User Updated',
     });
   } catch (error) {
     if (error.code === 'P2025') {
@@ -128,7 +132,7 @@ exports.changePassword = async (req, res) => {
       data: { password: newPassword }
     });
 
-    res.status(204).send();
+    res.status(204).json({message:'Password Changed successfully'});
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -143,7 +147,7 @@ exports.deleteUser = async (req, res) => {
       where: { userId: req.params.userId }
     });
 
-    res.status(204).send();
+    res.status(204).json({message:'User deleted successfully'});
   } catch (error) {
     if (error.code === 'P2025') {
       return res.status(404).json({ message: 'User not found' });
@@ -184,7 +188,8 @@ exports.loginUser = async (req, res) => {
       token,
       expiresIn,
       userId: user.userId,
-      username: user.username
+      username: user.username,
+      message:'Login Successful'
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

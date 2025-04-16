@@ -1,82 +1,95 @@
-POST http://localhost:5000/auth/register
-Content-Type: application/json
+# POST https://handbook-app.onrender.com/auth/register
+# Content-Type: application/json
 
-{
-  "email": "john.doe34@example.com",
-  "password": "johnSecurePass@789",
-  "username": "johnny_d",
-  "armyId": "C45289"
-}
+# {
+#   "email": "soldier.vikram@commandhd.in",
+#   "password": "Field@2024",
+#   "username": "s_vikram",
+#   "armyId": "F34512"
+# }
 
+# GET https://handbook-app.onrender.com/users/b6ed6edf-ac69-43ac-a488-713db73e373d
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmVkNmVkZi1hYzY5LTQzYWMtYTQ4OC03MTNkYjczZTM3M2QiLCJpYXQiOjE3NDQ3OTgwMDAsImV4cCI6MTc0NDg4NDQwMH0.tpvd_EuMN2BmNNzwZaY-MPImiGajm8_eedG8BHvTM_o
 
-
-# POST http://localhost:5000/auth/login
+# POST https://handbook-app.onrender.com/auth/login
 # Content-Type: application/json
 
 # { 
-#   "email": "alice@example12.com",
-#   "password": "alicePass4567"
+#   "email": "dr.priya@commandhd.in",
+#   "password": "Medic@456"
 # }
 
 # GET http://localhost:5000/users/1d406afc-6d68-412f-b775-5237bb5854ed
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxZDQwNmFmYy02ZDY4LTQxMmYtYjc3NS01MjM3YmI1ODU0ZWQiLCJpYXQiOjE3NDQ2OTI5NTYsImV4cCI6MTc0NDY5MzA0Mn0.OdxeOoFKhMBAyn4RWO-WQC67ITNFOhAi4kJVmMj2x0w
-
-# # ### Update User Info
-# PUT http://localhost:5000/users/1d406afc-6d68-412f-b775-5237bb5854ed
+# PUT https://handbook-app.onrender.com/users/b6ed6edf-ac69-43ac-a488-713db73e373d
 # Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxZDQwNmFmYy02ZDY4LTQxMmYtYjc3NS01MjM3YmI1ODU0ZWQiLCJpYXQiOjE3NDQ2OTI5NTYsImV4cCI6MTc0NDY5MzA0Mn0.OdxeOoFKhMBAyn4RWO-WQC67ITNFOhAi4kJVmMj2x0w
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmVkNmVkZi1hYzY5LTQzYWMtYTQ4OC03MTNkYjczZTM3M2QiLCJpYXQiOjE3NDQ3OTgwMDAsImV4cCI6MTc0NDg4NDQwMH0.tpvd_EuMN2BmNNzwZaY-MPImiGajm8_eedG8BHvTM_o
 
 # {
-#   "username": "updatedUser",
-#   "email": "updated@example.com"
+#   "username": "dr_priya_updated",
+#   "email": "updated.priya@commandhd.in",
+#   "phone": "+919876543210"
 # }
 
 
-
-# POST http://localhost:5000/todos
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MDU4OTgsImV4cCI6MTc0NDcwNTk4NH0.n3WfNNFV9RXhq2pO9yIoUyXJbNo6D65oMI28AZ-mIyk
+# PUT https://handbook-app.onrender.com/users/b6ed6edf-ac69-43ac-a488-713db73e373d/password
 # Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmVkNmVkZi1hYzY5LTQzYWMtYTQ4OC03MTNkYjczZTM3M2QiLCJpYXQiOjE3NDQ3OTgwMDAsImV4cCI6MTc0NDg4NDQwMH0.tpvd_EuMN2BmNNzwZaY-MPImiGajm8_eedG8BHvTM_o
 
 # {
-#   "activity": "Complete project",
-#   "description": "Finish the Node.js API project",
+#   "currentPassword": "Medic@456",
+#   "newPassword": "NewSecure@789"
+# }
+
+
+# POST https://handbook-app.onrender.com/todos
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmVkNmVkZi1hYzY5LTQzYWMtYTQ4OC03MTNkYjczZTM3M2QiLCJpYXQiOjE3NDQ3OTgwMDAsImV4cCI6MTc0NDg4NDQwMH0.tpvd_EuMN2BmNNzwZaY-MPImiGajm8_eedG8BHvTM_o
+
+# {
+#   "title": "Complete patient reports",
+#   "description": "Finish all pending patient case files for December",
+#   "dueDate": "2023-12-15",
 #   "priority": "high",
-#   "dueDate": "2025-04-20T00:00:00Z"
+#   "category": "medical"
 # }
 
 
-# GET http://localhost:5000/todos
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MDY2NTUsImV4cCI6MTc0NDc5MzA1NX0.Pw3EoCOHFf-jnS3DwJKvJ5Ge-FCaAZ3OhTX3RxECKFc
+# GET https://handbook-app.onrender.com/todos/suljlu2uh32yin4d9peke
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmVkNmVkZi1hYzY5LTQzYWMtYTQ4OC03MTNkYjczZTM3M2QiLCJpYXQiOjE3NDQ3OTgwMDAsImV4cCI6MTc0NDg4NDQwMH0.tpvd_EuMN2BmNNzwZaY-MPImiGajm8_eedG8BHvTM_o
 
 # GET http://localhost:5000/todos/68fc713a-1902-46a3-b623-7fc568335f93
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MDY1NTEsImV4cCI6MTc0NDc5Mjk1MX0.3TpF_jDPpeK37XaFtA1p4poqM7N-IqIG6s--ZTOF9yA
 
-# PUT http://localhost:5000/todos/68fc713a-1902-46a3-b623-7fc568335f93
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MDY1NTEsImV4cCI6MTc0NDc5Mjk1MX0.3TpF_jDPpeK37XaFtA1p4poqM7N-IqIG6s--ZTOF9yA
+# PUT https://handbook-app.onrender.com/todos/suljlu2uh32yin4d9peke
 # Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmVkNmVkZi1hYzY5LTQzYWMtYTQ4OC03MTNkYjczZTM3M2QiLCJpYXQiOjE3NDQ3OTgwMDAsImV4cCI6MTc0NDg4NDQwMH0.tpvd_EuMN2BmNNzwZaY-MPImiGajm8_eedG8BHvTM_o
 
 # {
-#   "activity": "Update project",
-#   "description": "Update the Node.js API project with new features",
-#   "priority": "medium"
+#   "description": "Finish ALL December patient reports (urgent!)",
+#   "priority": "urgent",
+#   "dueDate": "2023-12-10"
 # }
 
-
-# PUT http://localhost:5000/todos/68fc713a-1902-46a3-b623-7fc568335f93/status
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MDY1NTEsImV4cCI6MTc0NDc5Mjk1MX0.3TpF_jDPpeK37XaFtA1p4poqM7N-IqIG6s--ZTOF9yA
+# PUT https://handbook-app.onrender.com/todos/suljlu2uh32yin4d9peke/status
 # Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmVkNmVkZi1hYzY5LTQzYWMtYTQ4OC03MTNkYjczZTM3M2QiLCJpYXQiOjE3NDQ3OTgwMDAsImV4cCI6MTc0NDg4NDQwMH0.tpvd_EuMN2BmNNzwZaY-MPImiGajm8_eedG8BHvTM_o
 
 # {
 #   "status": "in-progress"
 # }
 
+# GET https://handbook-app.onrender.com/todos
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmVkNmVkZi1hYzY5LTQzYWMtYTQ4OC03MTNkYjczZTM3M2QiLCJpYXQiOjE3NDQ3OTgwMDAsImV4cCI6MTc0NDg4NDQwMH0.tpvd_EuMN2BmNNzwZaY-MPImiGajm8_eedG8BHvTM_o
+
 # DELETE http://localhost:5000/todos/68fc713a-1902-46a3-b623-7fc568335f93
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MDY1NTEsImV4cCI6MTc0NDc5Mjk1MX0.3TpF_jDPpeK37XaFtA1p4poqM7N-IqIG6s--ZTOF9yA
 
 
-# POST http://localhost:5000/allowance/calculate
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MTU1OTcsImV4cCI6MTc0NDgwMTk5N30.niluiIvlOnl5s76uK67-R19i6lpyDX_nUrud21E51vo
+# POST https://handbook-app.onrender.com/allowances/calculate
 # Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmVkNmVkZi1hYzY5LTQzYWMtYTQ4OC03MTNkYjczZTM3M2QiLCJpYXQiOjE3NDQ3OTgwMDAsImV4cCI6MTc0NDg4NDQwMH0.tpvd_EuMN2BmNNzwZaY-MPImiGajm8_eedG8BHvTM_o
+
 
 # {
 #   "jobDesignation": "Captain",
@@ -89,6 +102,12 @@ Content-Type: application/json
 #     "weight": 1200
 #   }
 # }
+
+# GET https://handbook-app.onrender.com/allowances/history?page=1&limit=5
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmVkNmVkZi1hYzY5LTQzYWMtYTQ4OC03MTNkYjczZTM3M2QiLCJpYXQiOjE3NDQ3OTgwMDAsImV4cCI6MTc0NDg4NDQwMH0.tpvd_EuMN2BmNNzwZaY-MPImiGajm8_eedG8BHvTM_o
+
+GET https://handbook-app.onrender.com/allowances/calculations/6kkrlqgp7fvjytxh8cx0xo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmVkNmVkZi1hYzY5LTQzYWMtYTQ4OC03MTNkYjczZTM3M2QiLCJpYXQiOjE3NDQ3OTgwMDAsImV4cCI6MTc0NDg4NDQwMH0.tpvd_EuMN2BmNNzwZaY-MPImiGajm8_eedG8BHvTM_o
 
 # GET http://localhost:5000/allowance/history?limit=10&offset=0
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MTY1NTQsImV4cCI6MTc0NDgwMjk1NH0.tToFJ2zps6L8DBVmRUZv2hJda2GXwsyMQQJtTSt_nrk

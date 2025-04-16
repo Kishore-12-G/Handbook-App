@@ -54,7 +54,10 @@ exports.calculateAllowance = async (req, res) => {
             }
         });
 
-        res.status(201).json(allowance);
+        res.status(201).json({
+            allowance,
+            message:'Allowance Calculated Successfully'
+        });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -87,7 +90,8 @@ exports.getAllowanceHistory = async (req, res) => {
                 totalPages,
                 currentPage: page,
                 limit
-            }
+            },
+            message:'Allowance History Fetched Successfully'
         });
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -106,7 +110,10 @@ exports.getAllowanceCalculationById = async (req, res) => {
         if (!allowance) {
             return res.status(404).json({ message: 'Calculation not found' });
         }
-        res.status(200).json(allowance);
+        res.status(200).json({
+            allowance,
+            message: 'Allowance Found'
+        });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

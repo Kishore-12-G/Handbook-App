@@ -19,7 +19,20 @@ exports.createTodo = async (req, res) => {
             }
         });
 
-        res.status(201).json(todo);
+        res.status(201).json(
+            {
+                todoId: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15), // Generate unique todoId
+                userId: req.user.userId,
+                activity,
+                description,
+                status: status || "pending",
+                priority: priority || "medium",
+                dueDate,
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString(),
+                message: 'Todo List Added'
+            }
+        );
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
@@ -30,7 +43,10 @@ exports.getAllTodos = async (req, res) => {
         const todos = await prisma.todo.findMany({
             where: { userId: req.user.userId }
         });
-        res.status(200).json(todos);
+        res.status(200).json({
+            todos,
+            message:"All the todos are fetched successfully"
+    });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -49,7 +65,10 @@ exports.getTodoById = async (req, res) => {
             return res.status(404).json({ message: "Todo not found" });
         }
 
-        res.status(200).json(todo);
+        res.status(200).json({
+            todo,
+            message:'todo fetched successfully'
+        });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -84,7 +103,10 @@ exports.updateTodo = async (req, res) => {
             }
         });
 
-        res.status(200).json(todo);
+        res.status(200).json({
+            todo,
+            message:'Todo updated successfully'
+        });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
@@ -122,7 +144,8 @@ exports.updateTodoStatus = async (req, res) => {
         res.status(200).json({
             todoId: todo.todoId,
             status: todo.status,
-            updatedAt: todo.updatedAt
+            updatedAt: todo.updatedAt,
+            message:'Todo Status Updated Successfully'
         });
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -148,7 +171,9 @@ exports.deleteTodo = async (req, res) => {
                 todoId: req.params.todoId
             }
         });
-        res.status(204).send();
+        res.status(204).send({
+            message:'Todo Deleted Successfully'
+        });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
