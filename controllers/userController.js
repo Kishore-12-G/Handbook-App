@@ -1,33 +1,29 @@
 const { PrismaClient } = require('@prisma/client');
-
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
 const prisma = new PrismaClient();
 
-// Password hashing utility
-const hashPassword = async (password) => {
-  const salt = await bcrypt.genSalt(10);
-  return await bcrypt.hash(password, salt);
-};
+// // Password hashing utility (commented out)
+// const hashPassword = async (password) => {
+//   const salt = await bcrypt.genSalt(10);
+//   return await bcrypt.hash(password, salt);
+// };
 
 // @desc    Register a new user
-// @route   POST /users
-// @access  Public
 exports.registerUser = async (req, res) => {
   try {
     const { username, email, password, armyId } = req.body;
-    console.log(req.body)
-    // Hash password
-    const hashedPassword = await hashPassword(password);
-    console.log(hashedPassword)
-    // Create user
+
+    // Skip hashing
+    // const hashedPassword = await hashPassword(password);
+
     const user = await prisma.user.create({
       data: {
         username,
         email,
-        password: password,
+        password: password, // directly use plain password
         armyId
       }
     });
@@ -41,7 +37,6 @@ exports.registerUser = async (req, res) => {
     });
   } catch (error) {
     if (error.code === 'P2002') {
-      // Unique constraint violation
       return res.status(400).json({ message: 'Username or email already exists' });
     }
     res.status(400).json({ message: error.message });
@@ -169,7 +164,6 @@ exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Check for user
     const user = await prisma.user.findUnique({
       where: { email }
     });
@@ -178,17 +172,15 @@ exports.loginUser = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    // Check if password matches
-    const isMatch = await bcrypt.compare(password, user.password);
+    // Direct password comparison
+    const isMatch = password === user.password;
 
     if (!isMatch) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    // Ensure JWT_EXPIRE is treated as seconds
     const expiresIn = parseInt(process.env.JWT_EXPIRE);
 
-    // Create token
     const token = jwt.sign(
       { userId: user.userId },
       process.env.JWT_SECRET,
