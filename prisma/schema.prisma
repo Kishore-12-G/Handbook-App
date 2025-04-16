@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String      @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String?     @unique @default(uuid())
+  username   String?     @unique
+  email      String?     @unique
+  password   String?
+  armyId     String?     @unique
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  todos      Todo[]      @relation("UserTodos")
+  allowances Allowance[] @relation("UserAllowances")
+}
+
+model Todo {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  todoId      String?  @unique @default(uuid())
+  userId      String
+  activity    String?
+  description String?
+  status      String? @default("pending")
+  priority    String? @default("medium")
+  dueDate     String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  user        User    @relation("UserTodos", fields: [userId], references: [userId])
+}
+
+model Allowance {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  calculationId    String?   @unique @default(uuid())
+  userId           String
+  jobDesignation   String?
+  basicPay         Float?
+  marriedStatus    Boolean? @default(false)
+  distanceTravelled Float?
+  vehicleIncluded  Json?    // Using Json type for the nested structure
+  result           Json?    // Using Json type for the nested breakdown structure
+  calculatedAt     DateTime? @default(now())
+  user             User    @relation("UserAllowances", fields: [userId], references: [userId])
+}

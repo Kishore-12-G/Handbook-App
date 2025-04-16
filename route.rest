@@ -1,0 +1,97 @@
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+  "email": "john.doe34@example.com",
+  "password": "johnSecurePass@789",
+  "username": "johnny_d",
+  "armyId": "C45289"
+}
+
+
+
+# POST http://localhost:5000/auth/login
+# Content-Type: application/json
+
+# { 
+#   "email": "alice@example12.com",
+#   "password": "alicePass4567"
+# }
+
+# GET http://localhost:5000/users/1d406afc-6d68-412f-b775-5237bb5854ed
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxZDQwNmFmYy02ZDY4LTQxMmYtYjc3NS01MjM3YmI1ODU0ZWQiLCJpYXQiOjE3NDQ2OTI5NTYsImV4cCI6MTc0NDY5MzA0Mn0.OdxeOoFKhMBAyn4RWO-WQC67ITNFOhAi4kJVmMj2x0w
+
+# # ### Update User Info
+# PUT http://localhost:5000/users/1d406afc-6d68-412f-b775-5237bb5854ed
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxZDQwNmFmYy02ZDY4LTQxMmYtYjc3NS01MjM3YmI1ODU0ZWQiLCJpYXQiOjE3NDQ2OTI5NTYsImV4cCI6MTc0NDY5MzA0Mn0.OdxeOoFKhMBAyn4RWO-WQC67ITNFOhAi4kJVmMj2x0w
+
+# {
+#   "username": "updatedUser",
+#   "email": "updated@example.com"
+# }
+
+
+
+# POST http://localhost:5000/todos
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MDU4OTgsImV4cCI6MTc0NDcwNTk4NH0.n3WfNNFV9RXhq2pO9yIoUyXJbNo6D65oMI28AZ-mIyk
+# Content-Type: application/json
+
+# {
+#   "activity": "Complete project",
+#   "description": "Finish the Node.js API project",
+#   "priority": "high",
+#   "dueDate": "2025-04-20T00:00:00Z"
+# }
+
+
+# GET http://localhost:5000/todos
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MDY2NTUsImV4cCI6MTc0NDc5MzA1NX0.Pw3EoCOHFf-jnS3DwJKvJ5Ge-FCaAZ3OhTX3RxECKFc
+
+# GET http://localhost:5000/todos/68fc713a-1902-46a3-b623-7fc568335f93
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MDY1NTEsImV4cCI6MTc0NDc5Mjk1MX0.3TpF_jDPpeK37XaFtA1p4poqM7N-IqIG6s--ZTOF9yA
+
+# PUT http://localhost:5000/todos/68fc713a-1902-46a3-b623-7fc568335f93
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MDY1NTEsImV4cCI6MTc0NDc5Mjk1MX0.3TpF_jDPpeK37XaFtA1p4poqM7N-IqIG6s--ZTOF9yA
+# Content-Type: application/json
+
+# {
+#   "activity": "Update project",
+#   "description": "Update the Node.js API project with new features",
+#   "priority": "medium"
+# }
+
+
+# PUT http://localhost:5000/todos/68fc713a-1902-46a3-b623-7fc568335f93/status
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MDY1NTEsImV4cCI6MTc0NDc5Mjk1MX0.3TpF_jDPpeK37XaFtA1p4poqM7N-IqIG6s--ZTOF9yA
+# Content-Type: application/json
+
+# {
+#   "status": "in-progress"
+# }
+
+# DELETE http://localhost:5000/todos/68fc713a-1902-46a3-b623-7fc568335f93
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MDY1NTEsImV4cCI6MTc0NDc5Mjk1MX0.3TpF_jDPpeK37XaFtA1p4poqM7N-IqIG6s--ZTOF9yA
+
+
+# POST http://localhost:5000/allowance/calculate
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MTU1OTcsImV4cCI6MTc0NDgwMTk5N30.niluiIvlOnl5s76uK67-R19i6lpyDX_nUrud21E51vo
+# Content-Type: application/json
+
+# {
+#   "jobDesignation": "Captain",
+#   "basicPay": 50000,
+#   "marriedStatus": true,
+#   "distanceTravelled": 300,
+#   "vehicleIncluded": {
+#     "type": "car",
+#     "details": "Honda Civic",
+#     "weight": 1200
+#   }
+# }
+
+# GET http://localhost:5000/allowance/history?limit=10&offset=0
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MTY1NTQsImV4cCI6MTc0NDgwMjk1NH0.tToFJ2zps6L8DBVmRUZv2hJda2GXwsyMQQJtTSt_nrk
+
+# GET http://localhost:5000/allowance/calculations/27496aab-d2a5-47d7-a599-b98734e2668e
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MTY1NTQsImV4cCI6MTc0NDgwMjk1NH0.tToFJ2zps6L8DBVmRUZv2hJda2GXwsyMQQJtTSt_nrk
