@@ -15,12 +15,12 @@ exports.calculateAllowance = async (req, res) => {
             return res.status(400).json({ message: 'Basic Pay and distance are required' });
         }
 
-        const baseAllowance = Math.floor(basicPay * 0.8);
-        const distanceAllowance = Math.floor(distanceTravelled * 50);
+        const baseAllowance = Math.floor(Number(basicPay) * 0.8);
+        const distanceAllowance = Math.floor(Number(distanceTravelled) * 50);
 
         let vehicleAllowance = 0;
         if (vehicleIncluded && vehicleIncluded.type != 'none' && vehicleIncluded.weight) {
-            vehicleAllowance = Math.floor((vehicleIncluded.weight * 50 * distanceTravelled) / 6000);
+            vehicleAllowance = Math.floor((Number(vehicleIncluded.weight) * 50 * Number(distanceTravelled)) / 6000);
         }
 
         let familyAllowance = 0;
@@ -38,10 +38,14 @@ exports.calculateAllowance = async (req, res) => {
                 calculationId: calculationId,
                 userId: req.user.userId,
                 jobDesignation,
-                basicPay,
+                basicPay: Number(basicPay),
                 marriedStatus,
-                distanceTravelled,
-                vehicleIncluded,
+                distanceTravelled: Number(distanceTravelled),
+                vehicleIncluded: {
+                    type: vehicleIncluded.type,
+                    details: vehicleIncluded.details,
+                    weight: Number(vehicleIncluded.weight)
+                },
                 result: {
                     breakdown: {
                         baseAllowance,
@@ -53,6 +57,7 @@ exports.calculateAllowance = async (req, res) => {
                 }
             }
         });
+        
 
         res.status(201).json({
             allowance,
