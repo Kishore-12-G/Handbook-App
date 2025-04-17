@@ -18,6 +18,7 @@ model User {
   updatedAt  DateTime    @updatedAt
   todos      Todo[]      @relation("UserTodos")
   allowances Allowance[] @relation("UserAllowances")
+  enrollments UpSkillEnrollment[] @relation("UserEnrollments")
 }
 
 model Todo {
@@ -46,4 +47,49 @@ model Allowance {
   result           Json?    // Using Json type for the nested breakdown structure
   calculatedAt     DateTime? @default(now())
   user             User    @relation("UserAllowances", fields: [userId], references: [userId])
+}
+
+model UpskillCertification{
+  id               String @id @default(auto()) @map("_id") @db.ObjectId
+  certificationId  String @unique @default(uuid())
+  type             String?
+  course           String
+  price            Float
+  description      String
+  image            String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  tax              Float?
+  discount         Float?
+  upskillEnrollments UpSkillEnrollment[]
+}
+
+
+enum VerificationStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum InterestStatus {
+  PENDING
+  INTERESTED
+  NOT_INTERESTED
+}
+
+model UpSkillEnrollment{
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  applicationId   String?   @unique @default(uuid())
+  certificationId String
+  name            String
+  email           String
+  phone           String
+  verificationStatus VerificationStatus @default(PENDING)
+  interestStatus  InterestStatus @default(PENDING)
+  description     String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime @updatedAt
+  certification   UpskillCertification @relation(fields: [certificationId], references: [certificationId], onDelete: Cascade)
+  user            User?                @relation("UserEnrollments", fields: [userId], references: [userId])
+  userId          String?
 }

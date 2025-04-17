@@ -20,6 +20,8 @@ app.use('/users', require('./routes/userRoutes'));
 app.use('/auth', require('./routes/authRoutes'));
 app.use('/todos', require('./routes/todoRoutes'));
 app.use('/allowances', require('./routes/allowanceRoute'));
+app.use('/upskill',require('./routes/upskillCertificationRoutes'));
+app.use('/upskill/enrollments',require('./routes/upskillEnrollmentsRoutes'));
 
 const PORT = process.env.PORT || 5000;
 
