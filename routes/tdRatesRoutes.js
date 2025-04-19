@@ -12,7 +12,7 @@ const { protect } = require('../middleware/auth');
 
 /**
  * @swagger
- * /tdRates:
+ * api/tdRates:
  *   get:
  *     tags: [Travel Rates]
  *     summary: Get all Travel Rates
@@ -58,7 +58,7 @@ const { protect } = require('../middleware/auth');
 
 /**
  * @swagger
- * /tdRates/{tdRateId}:
+ * api/tdRates/{tdRateId}:
  *   put:
  *     tags: [Travel Rates]
  *     summary: Update a Travel Rate
