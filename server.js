@@ -26,7 +26,7 @@ app.use('/api/upskill', require('./routes/upskillCertificationRoutes'));
 app.use('/api/upskill/enrollments', require('./routes/upskillEnrollmentsRoutes'));
 app.use('/api/checklist', require('./routes/tdClaimChecklist'));
 app.use('/api/tdRates', require('./routes/tdRatesRoutes'));
-app.use('/api/tdRules', require('./routes/tdRulesRoutes'));
+app.use('/api/td-rules', require('./routes/tdRulesRoutes'));
 
 const PORT = process.env.PORT || 5000;
 
