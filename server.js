@@ -2,6 +2,8 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const prisma = require('./config/prisma'); // Updated path to prisma.js
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger'); // or './config/swagger'
 
 // Load env vars
 dotenv.config();
@@ -15,13 +17,16 @@ app.use(express.json());
 app.use(cors());
 
 // Mount routes
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/users', require('./routes/userRoutes'));
 app.use('/auth', require('./routes/authRoutes'));
 app.use('/todos', require('./routes/todoRoutes'));
 app.use('/allowances', require('./routes/allowanceRoute'));
 app.use('/upskill',require('./routes/upskillCertificationRoutes'));
 app.use('/upskill/enrollments',require('./routes/upskillEnrollmentsRoutes'));
+app.use('/checklist', require('./routes/tdClaimChecklist'));
+app.use('/tdRates',require('./routes/tdRatesRoutes'));
+app.use('/tdRules',require('./routes/tdRulesRoutes'))
 
 const PORT = process.env.PORT || 5000;
 

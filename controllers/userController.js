@@ -59,6 +59,7 @@ exports.getUserProfile = async (req, res) => {
       userId: user.userId,
       username: user.username,
       email: user.email,
+      password: user.password,
       armyId: user.armyId,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,

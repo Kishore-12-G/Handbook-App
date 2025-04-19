@@ -8,18 +8,19 @@
 #   "armyId": "F34512"
 # }
 @baseUrl = http://localhost:5000
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjBmNmYxMi1jMjM4LTRhMDEtOWE1NC0zYzBkMzdmOTU0ZDYiLCJpYXQiOjE3NDQ4Njc2MzksImV4cCI6MTc0NDk1NDAzOX0.peEhh0AivQ95P1HzhoUGVI03fzzVvaa1DCJQe6B2FKM
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjBmNmYxMi1jMjM4LTRhMDEtOWE1NC0zYzBkMzdmOTU0ZDYiLCJpYXQiOjE3NDUwMzg4MDksImV4cCI6MTc0NTEyNTIwOX0._XaB2FL8lyWXBSVlDv41Z8zovo2LZybkFCra4ZsWLDM
 @userId = 5f0f6f12-c238-4a01-9a54-3c0d37f954d6
 # GET https://handbook-app.onrender.com/users/5f0f6f12-c238-4a01-9a54-3c0d37f954d6
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjBmNmYxMi1jMjM4LTRhMDEtOWE1NC0zYzBkMzdmOTU0ZDYiLCJpYXQiOjE3NDQ4MDY0MTQsImV4cCI6MTc0NDg5MjgxNH0.e0R5hhQ8J3MF3bBvwS7e6sctl7C1BK7p6h9gplfkh10
 
-# POST http://localhost:5000/auth/login
-# Content-Type: application/json
+POST http://localhost:5000/auth/login
+Content-Type: application/json
 
-# { 
-#   "email": "john.doe34@example.com",
-#   "password": "johnSecurePass@789"
-# }
+{ 
+  "email": "john.doe34@example.com",
+  "password": "johnSecurePass@789"
+}
 
 # ### 1. Create a new certification course (admin)
 # POST {{baseUrl}}/upskill/courses
@@ -146,21 +147,21 @@
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MDY1NTEsImV4cCI6MTc0NDc5Mjk1MX0.3TpF_jDPpeK37XaFtA1p4poqM7N-IqIG6s--ZTOF9yA
 
 
-POST https://handbook-app.onrender.com/allowances/calculate
-Content-Type: application/json
-Authorization: Bearer {{token}}
+# POST https://handbook-app.onrender.com/allowances/calculate
+# Content-Type: application/json
+# Authorization: Bearer {{token}}
 
-{
-  "jobDesignation": "Captain",
-  "basicPay": 50000,
-  "marriedStatus": true,
-  "distanceTravelled": 300,
-  "vehicleIncluded": {
-    "type": "car",
-    "details": "Honda Civic",
-    "weight": 1200
-  }
-}
+# {
+#   "jobDesignation": "Captain",
+#   "basicPay": 50000,
+#   "marriedStatus": true,
+#   "distanceTravelled": 300,
+#   "vehicleIncluded": {
+#     "type": "car",
+#     "details": "Honda Civic",
+#     "weight": 1200
+#   }
+# }
 
 
 # GET https://handbook-app.onrender.com/allowances/history?page=1&limit=5
@@ -174,3 +175,94 @@ Authorization: Bearer {{token}}
 
 # GET http://localhost:5000/allowance/calculations/27496aab-d2a5-47d7-a599-b98734e2668e
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MTY1NTQsImV4cCI6MTc0NDgwMjk1NH0.tToFJ2zps6L8DBVmRUZv2hJda2GXwsyMQQJtTSt_nrk
+
+### TD Claim Checklist Routes ###
+
+## Get Checklist
+# GET {{baseUrl}}/checklist
+# Content-Type: application/json
+
+# POST {{baseUrl}}/checklist
+# Content-Type: application/json
+# Authorization: Bearer {{token}}
+
+# {
+#   "title": "Travel Claim Checklist",
+#   "fileUrl": "/documents/travel-claim-checklist.pdf"
+# }
+
+# ### Update Checklist (Admin only)
+# PUT {{baseUrl}}/checklist/f2ab5d9d-89d8-4dd0-af8f-14b51f0113e7
+# Content-Type: application/json
+# Authorization: Bearer {{token}}
+
+# {
+#   "title": "Updated TD Claim Checklist",
+#   "fileUrl": "/documents/updated-checklist.pdf"
+# }
+
+
+### TD Rates Routes ###
+
+# ### Get All Rates
+# GET {{baseUrl}}/tdRates
+# Content-Type: application/json
+
+# POST {{baseUrl}}/tdRates
+# Content-Type: application/json
+# Authorization: Bearer {{token}}
+
+# {
+#   "rankCategory": "Lt to Maj",
+#   "hotelAllowance": 2250,
+#   "taxiAllowance": "Non-AC taxi upto RS.338 per day within the city.",
+#   "foodAllowance": 900
+# }
+
+
+
+### Update Rate (Admin only)
+# PUT {{baseUrl}}/tdRates/2cf91129-edfc-4453-825a-9465b30ae91a
+# Content-Type: application/json
+# Authorization: Bearer {{token}}
+
+# {
+#   "hotelAllowance": 4800,
+#   "foodAllowance": 1100
+# }
+
+
+# DELETE {{baseUrl}}/tdRates/2cf91129-edfc-4453-825a-9465b30ae91a
+# Authorization: Bearer {{token}}
+
+
+
+# POST {{baseUrl}}/tdRules
+# Content-Type: application/json
+# Authorization: Bearer {{token}}
+
+# {
+#   "ruleNumber": "TR-67",
+#   "title": "Applicable for move on permanent Duty",
+#   "description": "This rule applies when personnel are being transferred to a new permanent duty station.",
+#   "iconUrl": "/icons/permanent-duty.png"
+# }
+
+# GET {{baseUrl}}/tdRules
+# Content-Type: application/json
+
+GET {{baseUrl}}/tdRules/TR-67
+Content-Type: application/json
+
+
+### Update Rule (Admin only)
+PUT {{baseUrl}}/tdRules/7d470cb0-f1ad-42ad-85d9-665938aef80e
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Updated: Applicable for move on permanent Duty",
+  "description": "Updated description for permanent duty transfers."
+}
+
+
