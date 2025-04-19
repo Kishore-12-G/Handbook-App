@@ -53,7 +53,7 @@ const { protect } = require('../middleware/auth');
  *       500:
  *         description: Internal server error
  */
-
+router.get('/', getAllRules);
 /**
  * @swagger
  * /api/td-rules/{ruleNumber}:
@@ -135,7 +135,7 @@ const { protect } = require('../middleware/auth');
  */
 
 // Routes
-router.get('/', getAllRules);
+
 router.get('/:ruleNumber', getRuleById);
 router.post('/', protect, addTdRule);
 router.put('/:tdRulesId', protect, updateRule);
