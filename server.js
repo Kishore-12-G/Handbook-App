@@ -20,13 +20,13 @@ app.use(cors());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/users', require('./routes/userRoutes'));
 app.use('/auth', require('./routes/authRoutes'));
-app.use('/todos', require('./routes/todoRoutes'));
-app.use('/allowances', require('./routes/allowanceRoute'));
-app.use('/upskill',require('./routes/upskillCertificationRoutes'));
-app.use('/upskill/enrollments',require('./routes/upskillEnrollmentsRoutes'));
-app.use('/checklist', require('./routes/tdClaimChecklist'));
-app.use('/tdRates',require('./routes/tdRatesRoutes'));
-app.use('/tdRules',require('./routes/tdRulesRoutes'))
+app.use('/api/todos', require('./routes/todoRoutes'));
+app.use('/api/allowances', require('./routes/allowanceRoute'));
+app.use('/api/upskill',require('./routes/upskillCertificationRoutes'));
+app.use('/api/upskill/enrollments',require('./routes/upskillEnrollmentsRoutes'));
+app.use('/api/checklist', require('./routes/tdClaimChecklist'));
+app.use('/api/tdRates',require('./routes/tdRatesRoutes'));
+app.use('/api/tdRules',require('./routes/tdRulesRoutes'))
 
 const PORT = process.env.PORT || 5000;
 

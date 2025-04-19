@@ -7,7 +7,7 @@
 #   "username": "s_vikram",
 #   "armyId": "F34512"
 # }
-@baseUrl = http://localhost:5000
+@baseUrl = https://handbook-app.onrender.com
 
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjBmNmYxMi1jMjM4LTRhMDEtOWE1NC0zYzBkMzdmOTU0ZDYiLCJpYXQiOjE3NDUwMzg4MDksImV4cCI6MTc0NTEyNTIwOX0._XaB2FL8lyWXBSVlDv41Z8zovo2LZybkFCra4ZsWLDM
 @userId = 5f0f6f12-c238-4a01-9a54-3c0d37f954d6
@@ -119,9 +119,8 @@ Content-Type: application/json
 # GET https://handbook-app.onrender.com/todos/suljlu2uh32yin4d9peke
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmVkNmVkZi1hYzY5LTQzYWMtYTQ4OC03MTNkYjczZTM3M2QiLCJpYXQiOjE3NDQ3OTgwMDAsImV4cCI6MTc0NDg4NDQwMH0.tpvd_EuMN2BmNNzwZaY-MPImiGajm8_eedG8BHvTM_o
 
-# GET http://localhost:5000/todos/68fc713a-1902-46a3-b623-7fc568335f93
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5ZjBhOGU1MS0zY2RiLTRmZDUtOWZmNC01MmEzYTlhNDcwZDAiLCJpYXQiOjE3NDQ3MDY1NTEsImV4cCI6MTc0NDc5Mjk1MX0.3TpF_jDPpeK37XaFtA1p4poqM7N-IqIG6s--ZTOF9yA
-
+GET http://localhost:5000/api/todos/68fc713a-1902-46a3-b623-7fc568335f93
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjBmNmYxMi1jMjM4LTRhMDEtOWE1NC0zYzBkMzdmOTU0ZDYiLCJpYXQiOjE3NDUwNDc5ODYsImV4cCI6MTc0NTEzNDM4Nn0.eanacE8VJP43Ft0g4RB_dc5AXdwwNVqPMeIT2na9JXk
 # PUT https://handbook-app.onrender.com/todos/suljlu2uh32yin4d9peke
 # Content-Type: application/json
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmVkNmVkZi1hYzY5LTQzYWMtYTQ4OC03MTNkYjczZTM3M2QiLCJpYXQiOjE3NDQ3OTgwMDAsImV4cCI6MTc0NDg4NDQwMH0.tpvd_EuMN2BmNNzwZaY-MPImiGajm8_eedG8BHvTM_o
