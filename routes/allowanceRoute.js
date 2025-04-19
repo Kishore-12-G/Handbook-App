@@ -16,7 +16,7 @@ const {
 
 /**
  * @swagger
- * api/allowance/calculate:
+ * /api/allowance/calculate:
  *   post:
  *     tags: [Allowance]
  *     summary: Calculate Allowance
@@ -60,7 +60,7 @@ const {
 
 /**
  * @swagger
- * api/allowance/history:
+ * /api/allowance/history:
  *   get:
  *     tags: [Allowance]
  *     summary: Get user's allowance calculation history (paginated)
@@ -86,7 +86,7 @@ const {
 
 /**
  * @swagger
- * api/allowance/calculations/{calculationId}:
+ * /api/allowance/calculations/{calculationId}:
  *   get:
  *     tags: [Allowance]
  *     summary: Get a specific allowance calculation by ID

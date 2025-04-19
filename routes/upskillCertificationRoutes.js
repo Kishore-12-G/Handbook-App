@@ -36,7 +36,7 @@ const { protect } = require('../middleware/auth');
  *           type: string
  *           example: "Comprehensive React Fullstack course"
  *
- * api/upskill/courses:
+ * /api/upskill/courses:
  *   get:
  *     summary: Get all certification courses
  *     tags: [Certifications]
@@ -65,7 +65,7 @@ const { protect } = require('../middleware/auth');
  *       500:
  *         description: Server error
 
- * api/upskill/courses/{courseId}:
+ * /api/upskill/courses/{courseId}:
  *   get:
  *     summary: Get a certification course by ID
  *     tags: [Certifications]

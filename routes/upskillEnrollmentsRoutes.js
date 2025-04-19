@@ -37,7 +37,7 @@ const { protect } = require('../middleware/auth');
  *           type: string
  *           example: "Interested in the certification."
 
- * api/upskill/enrollments:
+ * /api/upskill/enrollments:
  *   post:
  *     summary: Create a new enrollment
  *     tags: [Enrollments]
@@ -57,7 +57,7 @@ const { protect } = require('../middleware/auth');
  *       500:
  *         description: Server Error
 
- * api/upskill/enrollments/{enrollmentId}:
+ * /api/upskill/enrollments/{enrollmentId}:
  *   get:
  *     summary: Get enrollment by ID
  *     tags: [Enrollments]
@@ -96,7 +96,7 @@ const { protect } = require('../middleware/auth');
  *       500:
  *         description: Server Error
 
- * api/upskill/enrollments/users/{userId}:
+ * /api/upskill/enrollments/users/{userId}:
  *   get:
  *     summary: Get all enrollments for a user
  *     tags: [Enrollments]

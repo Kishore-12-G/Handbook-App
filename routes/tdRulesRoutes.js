@@ -12,7 +12,7 @@ const { protect } = require('../middleware/auth');
 
 /**
  * @swagger
- * api/tdRules:
+ * /api/tdRules:
  *   get:
  *     tags: [Travel Rules]
  *     summary: Get all Travel Rules
@@ -55,7 +55,7 @@ const { protect } = require('../middleware/auth');
 
 /**
  * @swagger
- * api/tdRules/by-rule-number/{ruleNumber}:
+ * /api/tdRules/by-rule-number/{ruleNumber}:
  *   get:
  *     tags: [Travel Rules]
  *     summary: Get a Travel Rule by Rule Number
@@ -76,7 +76,7 @@ const { protect } = require('../middleware/auth');
 
 /**
  * @swagger
- * api/tdRules/{tdRulesId}:
+ * /api/tdRules/{tdRulesId}:
  *   put:
  *     tags: [Travel Rules]
  *     summary: Update a Travel Rule
