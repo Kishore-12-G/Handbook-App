@@ -9,18 +9,17 @@
 # }
 @baseUrl = https://handbook-app.onrender.com
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjBmNmYxMi1jMjM4LTRhMDEtOWE1NC0zYzBkMzdmOTU0ZDYiLCJpYXQiOjE3NDUwMzg4MDksImV4cCI6MTc0NTEyNTIwOX0._XaB2FL8lyWXBSVlDv41Z8zovo2LZybkFCra4ZsWLDM
-@userId = 5f0f6f12-c238-4a01-9a54-3c0d37f954d6
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjBmNmYxMi1jMjM4LTRhMDEtOWE1NC0zYzBkMzdmOTU0ZDYiLCJpYXQiOjE3NDUwNTMzNTQsImV4cCI6MTc0NTEzOTc1NH0.XV6OLWg4wh2dQWHI_cejJT8ZTIMlobRkUH2hCrxU6Sg@userId = 5f0f6f12-c238-4a01-9a54-3c0d37f954d6
 # GET https://handbook-app.onrender.com/users/5f0f6f12-c238-4a01-9a54-3c0d37f954d6
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjBmNmYxMi1jMjM4LTRhMDEtOWE1NC0zYzBkMzdmOTU0ZDYiLCJpYXQiOjE3NDQ4MDY0MTQsImV4cCI6MTc0NDg5MjgxNH0.e0R5hhQ8J3MF3bBvwS7e6sctl7C1BK7p6h9gplfkh10
 
-POST http://localhost:5000/auth/login
-Content-Type: application/json
+# POST http://localhost:5000/auth/login
+# Content-Type: application/json
 
-{ 
-  "email": "john.doe34@example.com",
-  "password": "johnSecurePass@789"
-}
+# { 
+#   "email": "john.doe34@example.com",
+#   "password": "johnSecurePass@789"
+# }
 
 # ### 1. Create a new certification course (admin)
 # POST {{baseUrl}}/upskill/courses
@@ -236,16 +235,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjBmN
 
 
 
-# POST {{baseUrl}}/tdRules
-# Content-Type: application/json
-# Authorization: Bearer {{token}}
+POST {{baseUrl}}/api/tdRules
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
-# {
-#   "ruleNumber": "TR-67",
-#   "title": "Applicable for move on permanent Duty",
-#   "description": "This rule applies when personnel are being transferred to a new permanent duty station.",
-#   "iconUrl": "/icons/permanent-duty.png"
-# }
+{
+  "ruleNumber": "TR-67",
+  "title": "Applicable for move on permanent Duty",
+  "description": "This rule applies when personnel are being transferred to a new permanent duty station.",
+  "iconUrl": "/icons/permanent-duty.png"
+}
 
 # GET {{baseUrl}}/tdRules
 # Content-Type: application/json

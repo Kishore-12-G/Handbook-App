@@ -63,13 +63,13 @@ const { protect } = require('../middleware/auth');
 
 /**
  * @swagger
- * /api/upskill/enrollments/{enrollmentId}:
+ * /api/upskill/enrollments/{applicationId}:
  *   get:
- *     summary: Get enrollment by ID
+ *     summary: Get enrollment by application ID
  *     tags: [Enrollments]
  *     parameters:
  *       - in: path
- *         name: enrollmentId
+ *         name: applicationId   // ✅ corrected
  *         required: true
  *         schema:
  *           type: string
@@ -81,11 +81,11 @@ const { protect } = require('../middleware/auth');
  *         description: Enrollment not found
  *
  *   put:
- *     summary: Update enrollment by ID
+ *     summary: Update enrollment by application ID
  *     tags: [Enrollments]
  *     parameters:
  *       - in: path
- *         name: enrollmentId
+ *         name: applicationId   // ✅ corrected
  *         required: true
  *         schema:
  *           type: string
@@ -125,16 +125,16 @@ const { protect } = require('../middleware/auth');
  *         description: User not found
  */
 
+// Make sure the specific routes come before the parameter routes
+router.get('/users/:userId', protect, getUserEnrollments);
+
 // POST /api/upskill/enrollments
 router.post('/', protect, CreateEnrollments);
 
 // GET /api/upskill/enrollments/:enrollmentId
-router.get('/:enrollmentId', getEnrollmentsById);
+router.get('/:applicationId', getEnrollmentsById);
 
 // PUT /api/upskill/enrollments/:enrollmentId
-router.put('/:enrollmentId', updateEnrollment);
-
-// GET /api/upskill/enrollments/users/:userId
-router.get('/users/:userId', protect, getUserEnrollments);
+router.put('/:applicationId', updateEnrollment);
 
 module.exports = router;

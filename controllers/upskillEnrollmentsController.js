@@ -12,6 +12,7 @@ exports.CreateEnrollments = async (req, res) => {
             });
         }
 
+        // Correct certification check - using upskillCertification model
         const certification = await prisma.upskillCertification.findUnique({
             where: { certificationId: certificationId }
         });
@@ -28,23 +29,48 @@ exports.CreateEnrollments = async (req, res) => {
             return res.status(404).json({ success: false, message: 'User not found' });
         }
 
+        // Using correct model name: UpSkillEnrollment (case-sensitive)
         const enrollment = await prisma.upSkillEnrollment.create({
-            data: { certificationId, name, email, phone, description, userId }
+            data: { 
+                certificationId, 
+                name, 
+                email, 
+                phone, 
+                description, 
+                userId,
+                verificationStatus: 'PENDING', // required enum
+                interestStatus: 'PENDING'    // required enum
+            }
         });
 
-        res.status(201).json({ success: true, data: enrollment, message: 'Course enrollment successful' });
+        return res.status(201).json({ 
+            success: true, 
+            data: enrollment, 
+            message: 'Course enrollment successful' 
+        });
 
     } catch (error) {
-        res.status(500).json({ success: false, message: 'Failed to create enrollment', error: error.message });
+        console.error('Enrollment creation error:', error);
+        return res.status(500).json({ 
+            success: false, 
+            message: 'Failed to create enrollment', 
+            error: error.message 
+        });
     }
 };
 
+// Update other functions to use correct model name:
+
 exports.getEnrollmentsById = async (req, res) => {
     try {
-        const { enrollmentId } = req.params;
+        const { applicationId } = req.params; // Changed from enrollmentId to applicationId
+
+        console.log('Looking for enrollment with ID:', applicationId);
 
         const enrollment = await prisma.upSkillEnrollment.findUnique({
-            where: { applicationId: enrollmentId },
+            where: { 
+                applicationId: applicationId 
+            },
             include: {
                 certification: true,
                 user: true
@@ -52,13 +78,25 @@ exports.getEnrollmentsById = async (req, res) => {
         });
 
         if (!enrollment) {
-            return res.status(404).json({ success: false, message: 'You are not enrolled in this course' });
+            return res.status(404).json({ 
+                success: false, 
+                message: 'Enrollment not found' 
+            });
         }
 
-        res.status(200).json({ success: true, data: enrollment, message: 'Enrollment fetched successfully' });
+        return res.status(200).json({ 
+            success: true, 
+            data: enrollment, 
+            message: 'Enrollment fetched successfully' 
+        });
 
     } catch (error) {
-        res.status(500).json({ success: false, message: 'Failed to retrieve the course enrollment', error: error.message });
+        console.error('Get enrollment error:', error);
+        return res.status(500).json({ 
+            success: false, 
+            message: 'Failed to retrieve the course enrollment', 
+            error: error.message 
+        });
     }
 };
 
@@ -67,14 +105,31 @@ exports.updateEnrollment = async (req, res) => {
         const { enrollmentId } = req.params;
         const updateData = req.body;
 
+        const enrollment = await prisma.upSkillEnrollment.findUnique({
+            where: { applicationId: enrollmentId }
+        });
+
+        if (!enrollment) {
+            return res.status(404).json({ success: false, message: 'Enrollment not found' });
+        }
+
         const updatedEnrollment = await prisma.upSkillEnrollment.update({
             where: { applicationId: enrollmentId },
             data: updateData
         });
 
-        res.status(200).json({ success: true, data: updatedEnrollment, message: 'Enrollment updated successfully' });
+        return res.status(200).json({ 
+            success: true, 
+            data: updatedEnrollment, 
+            message: 'Enrollment updated successfully' 
+        });
     } catch (error) {
-        res.status(500).json({ success: false, message: 'Failed to update the enrollment', error: error.message });
+        console.error('Update enrollment error:', error);
+        return res.status(500).json({ 
+            success: false, 
+            message: 'Failed to update the enrollment', 
+            error: error.message 
+        });
     }
 };
 
@@ -97,9 +152,18 @@ exports.getUserEnrollments = async (req, res) => {
             }
         });
 
-        res.status(200).json({ success: true, data: enrollments });
+        return res.status(200).json({ 
+            success: true, 
+            data: enrollments, 
+            message: 'User enrollments fetched successfully' 
+        });
 
     } catch (error) {
-        res.status(500).json({ success: false, message: 'Failed to retrieve the courses enrolled', error: error.message });
+        console.error('Get user enrollments error:', error);
+        return res.status(500).json({ 
+            success: false, 
+            message: 'Failed to retrieve the courses enrolled', 
+            error: error.message 
+        });
     }
 };

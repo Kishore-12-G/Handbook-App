@@ -39,7 +39,7 @@ const { protect } = require('../middleware/auth');
 
 /**
  * @swagger
- * /api/upskill/courses:
+ * /api/upskill:
  *   get:
  *     summary: Get all certification courses
  *     tags: [Certifications]
@@ -48,7 +48,11 @@ const { protect } = require('../middleware/auth');
  *         description: All courses retrieved
  *       400:
  *         description: Failed to retrieve courses
- *
+ */
+
+/**
+ * @swagger
+ * /api/upskill:
  *   post:
  *     summary: Create a new certification course
  *     tags: [Certifications]
@@ -71,7 +75,7 @@ const { protect } = require('../middleware/auth');
 
 /**
  * @swagger
- * /api/upskill/courses/{courseId}:
+ * /api/upskill/{courseId}:
  *   get:
  *     summary: Get a certification course by ID
  *     tags: [Certifications]
@@ -87,7 +91,11 @@ const { protect } = require('../middleware/auth');
  *         description: Course fetched by ID
  *       404:
  *         description: Course not found
- *
+ */
+
+/**
+ * @swagger
+ * /api/upskill/{courseId}:
  *   put:
  *     summary: Update a certification course by ID
  *     tags: [Certifications]
@@ -113,7 +121,11 @@ const { protect } = require('../middleware/auth');
  *         description: Course not found
  *       500:
  *         description: Server error
- *
+ */
+
+/**
+ * @swagger
+ * /api/upskill/{courseId}:
  *   delete:
  *     summary: Delete a certification course by ID
  *     tags: [Certifications]
@@ -136,12 +148,12 @@ const { protect } = require('../middleware/auth');
  */
 
 // Public Routes
-router.get('/courses', getAllCourse);
-router.get('/courses/:courseId', getCourseById);
+router.get('/', getAllCourse);
+router.get('/:courseId', getCourseById);
 
 // Protected Routes
-router.post('/courses', protect, createCourse);
-router.put('/courses/:courseId', protect, updateCourse);
-router.delete('/courses/:courseId', protect, deleteCourse);
+router.post('/', protect, createCourse);
+router.put('/:courseId', protect, updateCourse);
+router.delete('/:courseId', protect, deleteCourse);
 
 module.exports = router;
