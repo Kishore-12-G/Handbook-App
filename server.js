@@ -22,11 +22,11 @@ app.use('/users', require('./routes/userRoutes'));
 app.use('/auth', require('./routes/authRoutes'));
 app.use('/api/todos', require('./routes/todoRoutes'));
 app.use('/api/allowances', require('./routes/allowanceRoute'));
-app.use('/api/upskill',require('./routes/upskillCertificationRoutes'));
-app.use('/api/upskill/enrollments',require('./routes/upskillEnrollmentsRoutes'));
+app.use('/api/upskill', require('./routes/upskillCertificationRoutes'));
+app.use('/api/upskill/enrollments', require('./routes/upskillEnrollmentsRoutes'));
 app.use('/api/checklist', require('./routes/tdClaimChecklist'));
-app.use('/api/tdRates',require('./routes/tdRatesRoutes'));
-app.use('/api/tdRules',require('./routes/tdRulesRoutes'))
+app.use('/api/tdRates', require('./routes/tdRatesRoutes'));
+app.use('/api/tdRules', require('./routes/tdRulesRoutes'));
 
 const PORT = process.env.PORT || 5000;
 
@@ -61,7 +61,7 @@ process.on('SIGTERM', gracefulShutdown);
 process.on('SIGINT', gracefulShutdown);
 
 // Health check endpoint
-app.get('/api/v1/health', async (req, res) => {
+app.get('/health', async (req, res) => {
   try {
     await prisma.$queryRaw`SELECT 1`; // Simple DB check
     res.status(200).json({
@@ -76,3 +76,5 @@ app.get('/api/v1/health', async (req, res) => {
     });
   }
 });
+
+module.exports = app;

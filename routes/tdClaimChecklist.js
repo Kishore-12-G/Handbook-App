@@ -12,7 +12,7 @@ const { protect } = require('../middleware/auth');
 
 /**
  * @swagger
- * /api/tdClaimChecklist:
+ * /api/checklist:
  *   get:
  *     tags: [TD Claim Checklist]
  *     summary: Get the Checklist document
@@ -54,7 +54,7 @@ const { protect } = require('../middleware/auth');
 
 /**
  * @swagger
- * /api/tdClaimChecklist/{checklistId}:
+ * /api/checklist/{checklistId}:
  *   put:
  *     tags: [TD Claim Checklist]
  *     summary: Update a Checklist document

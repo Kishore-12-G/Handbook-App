@@ -5,7 +5,7 @@ const swaggerDefinition = {
   info: {
     title: 'Handbook',
     version: '1.0.0',
-    description: 'Api for handling functionality in handbook',
+    description: 'API for handling functionality in handbook',
   },
   servers: [
     {
@@ -30,7 +30,7 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
-  apis: ['./routes/*.js'], // adjust path if needed
+  apis: ['./routes/*.js'], // Path to route files
 };
 
 const swaggerSpec = swaggerJSDoc(options);

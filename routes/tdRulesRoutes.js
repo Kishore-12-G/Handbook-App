@@ -21,6 +21,7 @@ const { protect } = require('../middleware/auth');
  *         description: List of travel rules
  *       400:
  *         description: Internal server error
+ *   
  *   post:
  *     tags: [Travel Rules]
  *     summary: Create a new Travel Rule
@@ -55,7 +56,7 @@ const { protect } = require('../middleware/auth');
 
 /**
  * @swagger
- * /api/tdRules/by-rule-number/{ruleNumber}:
+ * /api/tdRules/{ruleNumber}:
  *   get:
  *     tags: [Travel Rules]
  *     summary: Get a Travel Rule by Rule Number
@@ -132,7 +133,6 @@ const { protect } = require('../middleware/auth');
  *       500:
  *         description: Internal server error
  */
-
 
 // Routes
 router.get('/', getAllRules);
